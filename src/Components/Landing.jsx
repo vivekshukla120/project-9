@@ -136,110 +136,141 @@ const Landing = () => {
       </nav>
 
       {/* Hero Section */}
-      <section
-        ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center"
-      >
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 ove                                                                                                 rflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
-        </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050321] via-[#2b0057] to-[#4a0072] px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT CONTENT */}
+            <div className="text-center lg:text-left">
+              <p className="text-cyan-400 font-bold uppercase tracking-wider mb-6">
+                THE FUTURE OF TRADING
+              </p>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center">
-            {/* Badge */}
-            <div
-              ref={badgeRef}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20"
-            >
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-white text-sm font-medium">
-                24/7 Active
-              </span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                <span className="text-white">The best performing</span>
+
+                <br />
+
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  AI-Powered
+                </span>
+
+                <br />
+
+                <span className="text-[#8c8cff]">Ecosystem</span>
+              </h1>
+
+              <p className="text-gray-300 text-lg leading-relaxed max-w-xl mb-10">
+                XRPAiBot is a decentralized AI-powered ecosystem driven by
+                community governance. Join our global digital community and
+                transform your economic future through decentralized wealth
+                exchange.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-xl text-white font-semibold hover:scale-105 transition">
+                  Connect Wallet ⚡
+                </button>
+
+                <button className="border border-purple-500 px-8 py-4 rounded-xl text-white hover:bg-purple-500/10 transition">
+                  Explore Features
+                </button>
+              </div>
             </div>
 
-            {/* Main Title - THE FUTURE OF TRADING */}
-            <h1
-              ref={titleRef}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4"
-            >
-              THE FUTURE OF TRADING
-            </h1>
+            {/* RIGHT IMAGE */}
+            <div className="relative flex justify-center">
+              {/* Top Badge */}
+              <div className="absolute top-0 right-10 rotate-6 bg-[#25205f] border border-cyan-500/30 px-6 py-3 rounded-2xl backdrop-blur-md">
+                <span className="text-cyan-400 font-semibold">AI Powered</span>
+              </div>
 
-            {/* Subtitle - The best performing */}
-            <h2
-              ref={subtitleRef}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8"
-            >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                The best performing
-              </span>
-            </h2>
+              {/* Main Card */}
+              <div className="relative bg-gradient-to-b from-[#26185f] to-[#1c1447] rounded-[40px] p-8 shadow-[0_0_80px_rgba(139,92,246,0.3)]">
+                <img
+                  src="src/assets/image.png"
+                  alt="XRPAiBot"
+                  className="w-full max-w-[550px] object-contain animate-float"
+                />
+              </div>
 
-            {/* Description */}
-            <p
-              ref={descriptionRef}
-              className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
-            >
-              XRPAiBot is a decentralized AI-powered ecosystem driven by
-              community governance. Join our global digital community and
-              transform your economic future through decentralized wealth
-              exchange.
-            </p>
-
-            {/* Buttons */}
-            <div
-              ref={buttonsRef}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <button className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-3 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105">
-                Connect Wallet
-              </button>
-              <button className="border-2 border-white/30 bg-white/5 backdrop-blur-sm px-8 py-3 rounded-full text-white font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
-                Explore Features
-              </button>
+              {/* Bottom Badge */}
+              <div className="absolute bottom-0 left-10 -rotate-3 bg-[#25205f] border border-purple-500/30 px-6 py-3 rounded-2xl backdrop-blur-md">
+                <span className="text-[#b388ff] font-semibold">
+                  24/7 Active
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section - Global Digital Community */}
-      <div>
+      {/* <div>
         <img src="https://xrpaibot.org/images/img4.png" />
-      </div>
-      <section ref={aboutRef} id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-purple-900/30 to-blue-900/30 rounded-3xl p-8 md:p-12 border border-white/10 backdrop-blur-sm">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-6">
-              XRP Ai Bot – Global Digital Community
-            </h2>
-            <p className="text-gray-300 text-lg text-center max-w-4xl mx-auto">
-              XRPAiBot is a global digital community driven by xrpaibot.org
-              community.
-            </p>
+      </div> */}
+      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-[#18003a] via-[#3a0a6b] to-[#060026]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT IMAGE */}
+            <div className="relative">
+              <div className="relative rounded-[30px] overflow-hidden bg-[#24114f] shadow-[0_0_60px_rgba(59,130,246,0.25)]">
+                <img
+                  src="src/assets/image copy.png"
+                  alt="AI Brain"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
-                <div className="text-4xl mb-3">🌍</div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Global Reach
-                </h3>
-                <p className="text-gray-400">Connected community worldwide</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
-                <div className="text-4xl mb-3">🤖</div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  AI Powered
-                </h3>
-                <p className="text-gray-400">Intelligent trading solutions</p>
-              </div>
-              <div className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300">
-                <div className="text-4xl mb-3">🏛️</div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Decentralized
-                </h3>
-                <p className="text-gray-400">Community governance</p>
+            {/* RIGHT CONTENT */}
+            <div>
+              <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight mb-8">
+                XRP Ai Bot – Global Digital
+                <br />
+                Community
+              </h2>
+
+              <p className="text-gray-300 text-xl leading-relaxed mb-6">
+                XRP Ai Bot is a global digital community driven by xrpaibot.org
+                community. Our online crypto decentralized ecosystem provides a
+                platform where people are able to exchange wealth.
+              </p>
+
+              <p className="text-gray-300 text-xl leading-relaxed mb-10">
+                Participation from members is what will help faster grow the
+                organization, and encouraging participation among the community
+                will help strengthen its reputation and credibility.
+              </p>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 gap-5">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition">
+                  <h3 className="text-5xl font-bold text-cyan-400 mb-2">
+                    100%
+                  </h3>
+                  <p className="text-gray-300 font-medium">Decentralized</p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition">
+                  <h3 className="text-5xl font-bold text-indigo-400 mb-2">
+                    AI
+                  </h3>
+                  <p className="text-gray-300 font-medium">Powered</p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition">
+                  <h3 className="text-5xl font-bold text-purple-400 mb-2">
+                    24/7
+                  </h3>
+                  <p className="text-gray-300 font-medium">Automated</p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 transition">
+                  <h3 className="text-5xl font-bold text-green-400 mb-2">
+                    Global
+                  </h3>
+                  <p className="text-gray-300 font-medium">Community</p>
+                </div>
               </div>
             </div>
           </div>
@@ -249,38 +280,69 @@ const Landing = () => {
       {/* How to Work Section */}
       <section
         id="how-to-work"
-        className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30"
+        className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-12">
+        {/* Background Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#120026] via-[#2b0050] to-[#0b0018]" />
+
+        {/* Glow Effects */}
+        <div className="absolute top-40 left-20 w-72 h-72 bg-purple-700/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-600/20 blur-[140px] rounded-full" />
+
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          {/* Center Image */}
+          <div className="flex justify-center mb-16">
+            <img
+              src="src/assets/image copy 2.png" // apni image path lagao
+              alt="AI Trading Bot"
+              className="w-full max-w-md md:max-w-lg object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.5)]"
+            />
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             How It Works
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+
+          <p className="text-gray-300 max-w-4xl mx-auto text-lg md:text-xl leading-relaxed mb-20">
+            Powered by smart contracts on the blockchain, XRP Ai Bot operates in
+            a fully decentralized ecosystem. The system continuously gathers
+            real-time trading data, analyzes market opportunities using advanced
+            AI, and executes profitable trades automatically.
+          </p>
+
+          {/* Steps */}
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               {
-                step: "1",
+                step: "01",
                 title: "Connect Wallet",
-                desc: "Connect your crypto wallet to get started",
+                desc: "Securely connect your crypto wallet to the XRP Ai Bot platform.",
               },
               {
-                step: "2",
-                title: "AI Analysis",
-                desc: "Our AI analyzes market conditions",
+                step: "02",
+                title: "AI Market Analysis",
+                desc: "Advanced AI algorithms scan and identify profitable opportunities.",
               },
               {
-                step: "3",
-                title: "Start Trading",
-                desc: "Execute trades with AI assistance",
+                step: "03",
+                title: "Automated Trading",
+                desc: "Trades are executed automatically through decentralized smart contracts.",
               },
             ].map((item, idx) => (
-              <div key={idx} className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+              <div
+                key={idx}
+                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-4">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
+
+                <h3 className="text-2xl font-semibold text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-400">{item.desc}</p>
+
+                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
