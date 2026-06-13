@@ -3,6 +3,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 
+// Image imports based on your project structure
+// Image imports based on your project structure
+import heroMainImg from "../assets/image.png";
+import aboutImg from "../assets/image copy.png";
+import howItWorksImg from "../assets/image copy 2.png";
+import featuresImg from "../assets/image copy 3.png";
+import ctaImg from "../assets/image copy 4.png";
+import footerLogoImg from "../assets/image copy 5.png";
+
 const Landing = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroRef = useRef(null);
@@ -118,16 +127,21 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 overflow-x-hidden">
+    <div
+      id="app-root"
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 overflow-x-hidden"
+    >
       {/* Navigation */}
       <nav
         ref={navRef}
+        id="main-navigation"
         className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
             {/* Logo */}
             <div
+              id="logo-container"
               className="flex items-center space-x-2 cursor-pointer"
               onClick={() => scrollToSection("home")}
             >
@@ -151,15 +165,23 @@ const Landing = () => {
                 src="https://xrpaibot.org/images/XRP.png"
                 alt="XRP Logo"
                 className="w-8 h-8"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://via.placeholder.com/32?text=XRP";
+                }}
               />
               <span className="text-white font-bold text-xl">XRPAiBot</span>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div
+              className="hidden md:flex items-center space-x-8"
+              id="desktop-nav"
+            >
               {navItems.map((item) => (
                 <button
                   key={item.id}
+                  id={`nav-${item.id}`}
                   onClick={() => scrollToSection(item.id)}
                   className="text-gray-300 hover:text-white transition-colors duration-300 text-sm font-medium cursor-pointer"
                 >
@@ -170,6 +192,7 @@ const Landing = () => {
 
             {/* Mobile menu button */}
             <button
+              id="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden text-white focus:outline-none"
               aria-label="Toggle menu"
@@ -202,11 +225,15 @@ const Landing = () => {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-lg border-b border-white/10">
+          <div
+            id="mobile-nav-menu"
+            className="md:hidden bg-black/90 backdrop-blur-lg border-b border-white/10"
+          >
             <div className="px-4 py-4 space-y-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
+                  id={`mobile-nav-${item.id}`}
                   onClick={() => scrollToSection(item.id)}
                   className="block w-full text-left text-gray-300 hover:text-white transition-colors duration-300 py-2 text-base font-medium"
                 >
@@ -221,14 +248,15 @@ const Landing = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050321] via-[#2b0057] to-[#4a0072] px-6 lg:px-12 pt-20"
+        className="hero-section relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#050321] via-[#2b0057] to-[#4a0072] px-6 lg:px-12 pt-20"
       >
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT CONTENT */}
-            <div className="text-center lg:text-left">
+            <div id="hero-content" className="text-center lg:text-left">
               <p
                 ref={badgeRef}
+                id="hero-badge"
                 className="text-cyan-400 font-bold uppercase tracking-wider mb-4 md:mb-6 text-sm md:text-base"
               >
                 THE FUTURE OF TRADING
@@ -236,6 +264,7 @@ const Landing = () => {
 
               <h1
                 ref={titleRef}
+                id="hero-title"
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 md:mb-6"
               >
                 <span className="text-white">The best performing</span>
@@ -249,6 +278,7 @@ const Landing = () => {
 
               <p
                 ref={descriptionRef}
+                id="hero-description"
                 className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 mb-6 md:mb-10"
               >
                 XRPAiBot is a decentralized AI-powered ecosystem driven by
@@ -259,37 +289,62 @@ const Landing = () => {
 
               <div
                 ref={buttonsRef}
+                id="hero-buttons"
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white font-semibold hover:scale-105 transition">
+                <button
+                  id="connect-wallet-btn"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white font-semibold hover:scale-105 transition"
+                >
                   Connect Wallet ⚡
                 </button>
-                <button className="border border-purple-500 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white hover:bg-purple-500/10 transition">
+                <button
+                  id="explore-features-btn"
+                  className="border border-purple-500 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white hover:bg-purple-500/10 transition"
+                >
                   Explore Features
                 </button>
               </div>
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="relative flex justify-center mt-8 lg:mt-0">
+            <div
+              id="hero-image-container"
+              className="relative flex justify-center mt-8 lg:mt-0"
+            >
               {/* Top Badge */}
-              <div className="absolute top-0 right-5 lg:right-10 rotate-6 bg-[#25205f] border border-cyan-500/30 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl backdrop-blur-md">
+              <div
+                id="top-badge"
+                className="absolute top-0 right-5 lg:right-10 rotate-6 bg-[#25205f] border border-cyan-500/30 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl backdrop-blur-md"
+              >
                 <span className="text-cyan-400 font-semibold text-sm lg:text-base">
                   AI Powered
                 </span>
               </div>
 
               {/* Main Card */}
-              <div className="relative bg-gradient-to-b from-[#26185f] to-[#1c1447] rounded-[40px] p-6 lg:p-8 shadow-[0_0_80px_rgba(139,92,246,0.3)]">
+              <div
+                id="hero-card"
+                className="relative bg-gradient-to-b from-[#26185f] to-[#1c1447] rounded-[40px] p-6 lg:p-8 shadow-[0_0_80px_rgba(139,92,246,0.3)]"
+              >
                 <img
-                  src="src/assets/image.png"
-                  alt="XRPAiBot"
+                  id="hero-main-img"
+                  src={heroMainImg}
+                  alt="XRPAiBot Hero"
                   className="w-full max-w-[350px] sm:max-w-[450px] lg:max-w-[550px] object-contain animate-float"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "/Users/nadcab/Desktop/project-9/src/assets/image.png";
+                  }}
                 />
               </div>
 
               {/* Bottom Badge */}
-              <div className="absolute bottom-0 left-5 lg:left-10 -rotate-3 bg-[#25205f] border border-purple-500/30 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl backdrop-blur-md">
+              <div
+                id="bottom-badge"
+                className="absolute bottom-0 left-5 lg:left-10 -rotate-3 bg-[#25205f] border border-purple-500/30 px-4 lg:px-6 py-2 lg:py-3 rounded-2xl backdrop-blur-md"
+              >
                 <span className="text-[#b388ff] font-semibold text-sm lg:text-base">
                   24/7 Active
                 </span>
@@ -302,44 +357,71 @@ const Landing = () => {
       {/* About Section - Global Digital Community */}
       <section
         id="about"
-        className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-[#18003a] via-[#3a0a6b] to-[#060026]"
+        className="about-section relative py-16 md:py-24 overflow-hidden bg-gradient-to-br from-[#18003a] via-[#3a0a6b] to-[#060026]"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT IMAGE */}
-            <div className="relative order-2 lg:order-1">
+            <div
+              id="about-image-container"
+              className="relative order-2 lg:order-1"
+            >
               <div className="relative rounded-[30px] overflow-hidden bg-[#24114f] shadow-[0_0_60px_rgba(59,130,246,0.25)]">
                 <img
-                  src="src/assets/image copy.png"
+                  id="about-img"
+                  src={aboutImg}
                   alt="AI Brain"
                   className="w-full h-auto object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/600x400?text=XRPAiBot";
+                  }}
                 />
               </div>
             </div>
 
             {/* RIGHT CONTENT */}
-            <div className="order-1 lg:order-2 text-center lg:text-left">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 md:mb-8">
+            <div
+              id="about-content"
+              className="order-1 lg:order-2 text-center lg:text-left"
+            >
+              <h2
+                id="about-title"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 md:mb-8"
+              >
                 XRP Ai Bot – Global Digital
                 <br className="hidden sm:block" />
                 Community
               </h2>
 
-              <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-4 md:mb-6">
+              <p
+                id="about-desc-1"
+                className="text-gray-300 text-base md:text-xl leading-relaxed mb-4 md:mb-6"
+              >
                 XRP Ai Bot is a global digital community driven by xrpaibot.org
                 community. Our online crypto decentralized ecosystem provides a
                 platform where people are able to exchange wealth.
               </p>
 
-              <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-8 md:mb-10">
+              <p
+                id="about-desc-2"
+                className="text-gray-300 text-base md:text-xl leading-relaxed mb-8 md:mb-10"
+              >
                 Participation from members is what will help faster grow the
                 organization, and encouraging participation among the community
                 will help strengthen its reputation and credibility.
               </p>
 
               {/* Stats Cards */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-5">
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition">
+              <div
+                id="stats-container"
+                className="grid grid-cols-2 gap-3 sm:gap-5"
+              >
+                <div
+                  id="stat-1"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition"
+                >
                   <h3 className="text-3xl sm:text-5xl font-bold text-cyan-400 mb-1 sm:mb-2">
                     100%
                   </h3>
@@ -347,7 +429,10 @@ const Landing = () => {
                     Decentralized
                   </p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition">
+                <div
+                  id="stat-2"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition"
+                >
                   <h3 className="text-3xl sm:text-5xl font-bold text-indigo-400 mb-1 sm:mb-2">
                     AI
                   </h3>
@@ -355,7 +440,10 @@ const Landing = () => {
                     Powered
                   </p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition">
+                <div
+                  id="stat-3"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition"
+                >
                   <h3 className="text-3xl sm:text-5xl font-bold text-purple-400 mb-1 sm:mb-2">
                     24/7
                   </h3>
@@ -363,7 +451,10 @@ const Landing = () => {
                     Automated
                   </p>
                 </div>
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition">
+                <div
+                  id="stat-4"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl sm:rounded-3xl p-4 sm:p-8 text-center hover:bg-white/10 transition"
+                >
                   <h3 className="text-3xl sm:text-5xl font-bold text-green-400 mb-1 sm:mb-2">
                     Global
                   </h3>
@@ -380,7 +471,7 @@ const Landing = () => {
       {/* How to Work Section */}
       <section
         id="how-to-work"
-        className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="how-it-works-section relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#120026] via-[#2b0050] to-[#0b0018]" />
@@ -391,20 +482,35 @@ const Landing = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           {/* Center Image */}
-          <div className="flex justify-center mb-12 md:mb-16">
+          <div
+            id="how-it-works-image"
+            className="flex justify-center mb-12 md:mb-16"
+          >
             <img
-              src="src/assets/image copy 2.png"
+              id="how-it-works-img"
+              src={howItWorksImg}
               alt="AI Trading Bot"
               className="w-full max-w-[280px] sm:max-w-md md:max-w-lg object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.5)]"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src =
+                  "https://via.placeholder.com/500x400?text=AI+Trading+Bot";
+              }}
             />
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 md:mb-6">
+          <h2
+            id="how-it-works-title"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 md:mb-6"
+          >
             How It Works
           </h2>
 
-          <p className="text-gray-300 max-w-4xl mx-auto text-base md:text-xl leading-relaxed mb-12 md:mb-20 px-4">
+          <p
+            id="how-it-works-desc"
+            className="text-gray-300 max-w-4xl mx-auto text-base md:text-xl leading-relaxed mb-12 md:mb-20 px-4"
+          >
             Powered by smart contracts on the blockchain, XRP Ai Bot operates in
             a fully decentralized ecosystem. The system continuously gathers
             real-time trading data, analyzes market opportunities using advanced
@@ -412,27 +518,34 @@ const Landing = () => {
           </p>
 
           {/* Steps */}
-          <div className="grid md:grid-cols-3 gap-6 md:gap-10">
+          <div
+            id="steps-container"
+            className="grid md:grid-cols-3 gap-6 md:gap-10"
+          >
             {[
               {
                 step: "01",
                 title: "Connect Wallet",
                 desc: "Securely connect your crypto wallet to the XRP Ai Bot platform.",
+                id: "step-1",
               },
               {
                 step: "02",
                 title: "AI Market Analysis",
                 desc: "Advanced AI algorithms scan and identify profitable opportunities.",
+                id: "step-2",
               },
               {
                 step: "03",
                 title: "Automated Trading",
                 desc: "Trades are executed automatically through decentralized smart contracts.",
+                id: "step-3",
               },
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all duration-300"
+                id={item.id}
+                className="step-card bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-all duration-300"
               >
                 <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-3 md:mb-4">
                   {item.step}
@@ -452,40 +565,55 @@ const Landing = () => {
       {/* Features Section */}
       <section
         id="features"
-        className="relative py-16 md:py-24 px-6 lg:px-8 overflow-hidden"
+        className="features-section relative py-16 md:py-24 px-6 lg:px-8 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT CONTENT */}
-            <div className="text-center lg:text-left">
+            <div id="features-content" className="text-center lg:text-left">
               {/* Top Badge */}
-              <div className="inline-flex items-center px-4 md:px-5 py-2 mb-6 rounded-full bg-cyan-500/20 border border-cyan-400/30">
+              <div
+                id="features-badge"
+                className="inline-flex items-center px-4 md:px-5 py-2 mb-6 rounded-full bg-cyan-500/20 border border-cyan-400/30"
+              >
                 <span className="text-cyan-400 font-semibold text-xs md:text-sm">
                   🚀 Start Registration
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6">
+              <h2
+                id="features-title"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6"
+              >
                 Beyond a Crypto
                 <br />
                 Ecosystem
               </h2>
 
-              <p className="text-gray-300 text-base md:text-xl leading-relaxed mb-4 md:mb-6">
+              <p
+                id="features-desc-1"
+                className="text-gray-300 text-base md:text-xl leading-relaxed mb-4 md:mb-6"
+              >
                 XRP Ai Bot is more than a crypto ecosystem, it's a vibrant
                 global community powered by XRP Ai Bot users that brings people
                 together online and supports real-world meetings.
               </p>
 
-              <p className="text-gray-400 text-sm md:text-lg leading-relaxed mb-8 md:mb-10">
+              <p
+                id="features-desc-2"
+                className="text-gray-400 text-sm md:text-lg leading-relaxed mb-8 md:mb-10"
+              >
                 Engagement is the driving force behind our platform. You can
                 reach people across the globe with a few clicks and transform
                 economic opportunities through decentralized technology.
               </p>
 
               {/* Features List */}
-              <div className="space-y-4 md:space-y-6">
-                <div className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start">
+              <div id="features-list" className="space-y-4 md:space-y-6">
+                <div
+                  id="feature-1"
+                  className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start"
+                >
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white text-sm md:text-base">
                     ✓
                   </div>
@@ -493,7 +621,10 @@ const Landing = () => {
                     Global Digital Community
                   </span>
                 </div>
-                <div className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start">
+                <div
+                  id="feature-2"
+                  className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start"
+                >
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white text-sm md:text-base">
                     ✓
                   </div>
@@ -501,7 +632,10 @@ const Landing = () => {
                     Decentralized Wealth Exchange
                   </span>
                 </div>
-                <div className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start">
+                <div
+                  id="feature-3"
+                  className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start"
+                >
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-teal-500 flex items-center justify-center text-white text-sm md:text-base">
                     ✓
                   </div>
@@ -513,12 +647,18 @@ const Landing = () => {
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="relative">
+            <div id="features-image-container" className="relative">
               <div className="rounded-[35px] overflow-hidden bg-gradient-to-br from-[#2b175d] to-[#182a60] p-4 md:p-6 shadow-[0_0_80px_rgba(59,130,246,0.2)]">
                 <img
-                  src="src/assets/image copy 3.png"
+                  id="features-img"
+                  src={featuresImg}
                   alt="AI Robot"
                   className="w-full h-auto object-contain"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/500x400?text=AI+Robot";
+                  }}
                 />
               </div>
             </div>
@@ -529,30 +669,37 @@ const Landing = () => {
       {/* FAQ Section */}
       <section
         id="faq"
-        className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/30"
+        className="faq-section py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-black/30"
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 md:mb-12">
+          <h2
+            id="faq-title"
+            className="text-3xl sm:text-4xl font-bold text-white text-center mb-8 md:mb-12"
+          >
             FAQ
           </h2>
-          <div className="space-y-4">
+          <div id="faq-container" className="space-y-4">
             {[
               {
                 q: "What is XRPAiBot?",
                 a: "XRPAiBot is a decentralized AI-powered trading ecosystem that leverages machine learning to optimize trading strategies.",
+                id: "faq-1",
               },
               {
                 q: "How do I get started?",
                 a: "Simply connect your wallet, deposit funds, and our AI bot will start trading automatically.",
+                id: "faq-2",
               },
               {
                 q: "Is it safe?",
                 a: "Yes, all transactions are secured by smart contracts on the blockchain.",
+                id: "faq-3",
               },
             ].map((faq, idx) => (
               <div
                 key={idx}
-                className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden"
+                id={faq.id}
+                className="faq-item bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden"
               >
                 <details className="group">
                   <summary className="flex justify-between items-center cursor-pointer p-4 md:p-6 text-white font-semibold hover:bg-white/5 transition-colors list-none">
@@ -574,13 +721,16 @@ const Landing = () => {
       {/* CTA SECTION */}
       <section
         id="cta"
-        className="relative py-16 md:py-24 px-6 lg:px-8 overflow-hidden"
+        className="cta-section relative py-16 md:py-24 px-6 lg:px-8 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* LEFT CONTENT */}
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6">
+            <div id="cta-content" className="text-center lg:text-left">
+              <h2
+                id="cta-title"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 md:mb-6"
+              >
                 Join the Future of
                 <br />
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -588,29 +738,50 @@ const Landing = () => {
                 </span>
               </h2>
 
-              <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mb-8 md:mb-10">
+              <p
+                id="cta-desc"
+                className="text-gray-300 text-base md:text-xl leading-relaxed max-w-2xl mb-8 md:mb-10"
+              >
                 Be part of the XRP Ai Bot revolution. Experience the power of
                 AI-driven decentralized trading with community governance and
                 transparent blockchain technology.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white font-semibold hover:scale-105 transition-all duration-300">
+              <div
+                id="cta-buttons"
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
+                <button
+                  id="cta-connect-wallet"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-600 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white font-semibold hover:scale-105 transition-all duration-300"
+                >
                   Connect Wallet ⚡
                 </button>
-                <button className="border border-purple-500 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white hover:bg-white/10 transition-all duration-300">
+                <button
+                  id="cta-learn-more"
+                  className="border border-purple-500 px-6 md:px-8 py-3 md:py-4 rounded-xl text-white hover:bg-white/10 transition-all duration-300"
+                >
                   Learn More
                 </button>
               </div>
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="relative flex justify-center">
+            <div
+              id="cta-image-container"
+              className="relative flex justify-center"
+            >
               <div className="relative rounded-[30px] overflow-hidden bg-gradient-to-br from-[#27145d] to-[#182d67] p-4 md:p-6 shadow-[0_0_60px_rgba(59,130,246,0.25)]">
                 <img
-                  src="src/assets/image copy 4.png"
+                  id="cta-img"
+                  src={ctaImg}
                   alt="AI Robot"
                   className="w-full max-w-[420px] md:max-w-[520px] object-contain animate-float"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/520x400?text=AI+Robot";
+                  }}
                 />
               </div>
             </div>
@@ -619,22 +790,37 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-[#020817] py-10 md:py-14 px-6 lg:px-8">
+      <footer
+        id="main-footer"
+        className="border-t border-white/10 bg-[#020817] py-10 md:py-14 px-6 lg:px-8"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
             {/* Logo Section */}
-            <div className="sm:col-span-2 md:col-span-1">
+            <div
+              id="footer-logo-section"
+              className="sm:col-span-2 md:col-span-1"
+            >
               <div className="flex items-center gap-3 mb-4">
                 <img
-                  src="src/assets/image copy 5.png"
+                  id="footer-logo-img"
+                  src={footerLogoImg}
                   alt="XRPAiBot Logo"
                   className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src =
+                      "https://via.placeholder.com/48?text=XRPAiBot";
+                  }}
                 />
                 <h3 className="text-2xl md:text-3xl font-bold text-white">
                   XRPAiBot
                 </h3>
               </div>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-sm">
+              <p
+                id="footer-desc"
+                className="text-gray-400 text-sm md:text-base leading-relaxed max-w-sm"
+              >
                 A decentralized AI-powered ecosystem driven by community
                 governance. Join our global digital community and transform your
                 economic future.
@@ -642,7 +828,7 @@ const Landing = () => {
             </div>
 
             {/* Navigation */}
-            <div>
+            <div id="footer-nav">
               <h4 className="text-white font-semibold mb-4 text-base md:text-lg">
                 Navigation
               </h4>
@@ -650,6 +836,7 @@ const Landing = () => {
                 {navItems.map((item) => (
                   <button
                     key={item.id}
+                    id={`footer-nav-${item.id}`}
                     onClick={() => scrollToSection(item.id)}
                     className="block text-gray-400 hover:text-white transition text-sm md:text-base"
                   >
@@ -660,33 +847,36 @@ const Landing = () => {
             </div>
 
             {/* Features */}
-            <div>
+            <div id="footer-features">
               <h4 className="text-white font-semibold mb-4 text-base md:text-lg">
                 Features
               </h4>
               <div className="space-y-2 md:space-y-3 text-gray-400 text-sm md:text-base">
-                <p>AI Trading</p>
-                <p>Smart Contracts</p>
-                <p>Community Governance</p>
-                <p>Wealth Exchange</p>
+                <p id="footer-feature-1">AI Trading</p>
+                <p id="footer-feature-2">Smart Contracts</p>
+                <p id="footer-feature-3">Community Governance</p>
+                <p id="footer-feature-4">Wealth Exchange</p>
               </div>
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div id="footer-quick-links">
               <h4 className="text-white font-semibold mb-4 text-base md:text-lg">
                 Quick Links
               </h4>
               <div className="space-y-2 md:space-y-3 text-gray-400 text-sm md:text-base">
-                <p>Contact Support</p>
-                <p>Get Started</p>
-                <p>Help Center</p>
-                <p>About Us</p>
+                <p id="footer-link-1">Contact Support</p>
+                <p id="footer-link-2">Get Started</p>
+                <p id="footer-link-3">Help Center</p>
+                <p id="footer-link-4">About Us</p>
               </div>
             </div>
           </div>
 
-          <div className="border-t border-white/10 mt-8 md:mt-10 pt-6 md:pt-6 text-center text-gray-500 text-xs md:text-sm">
+          <div
+            id="footer-copyright"
+            className="border-t border-white/10 mt-8 md:mt-10 pt-6 md:pt-6 text-center text-gray-500 text-xs md:text-sm"
+          >
             © 2024 XRPAiBot. All rights reserved.
           </div>
         </div>
@@ -704,6 +894,26 @@ const Landing = () => {
         }
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+          .step-card {
+            margin-bottom: 1rem;
+          }
+          .faq-item summary {
+            word-break: break-word;
+          }
+        }
+
+        /* Touch-friendly button sizes */
+        @media (max-width: 640px) {
+          button,
+          .step-card,
+          .faq-item summary {
+            cursor: pointer;
+            min-height: 44px;
+          }
         }
       `}</style>
     </div>
